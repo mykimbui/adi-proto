@@ -70,7 +70,7 @@
 		// Calculate next layout for section 1
 		nextImages.forEach((image, index) => {
 			const angle = ((Math.PI * 2) / nextImages.length) * index;
-			const radius = 150; // Radius of the circle
+			const radius = 200; // Radius of the circle
 			const x = vw / 2 + radius * Math.cos(angle) - 25;
 			const y = vh / 2 + radius * Math.sin(angle) - 25;
 			nextImages[index] = { src: image, x, y };
@@ -80,8 +80,8 @@
 	function updateLayoutForSection3(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 2
 		nextImages.forEach((image, index) => {
-			const x = mouseX + index * 160;
-			const y = mouseY + index * 160;
+			const x = mouseX + index * 200;
+			const y = mouseY + index * 200;
 			nextImages[index] = { src: image, x, y };
 		});
 	}
@@ -89,15 +89,15 @@
 	function updateLayoutForSection4(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 3
 		nextImages.forEach((image, index) => {
-			const x = mouseX - index * 160;
-			const y = mouseY + index * 160;
+			const x = mouseX - index * 200;
+			const y = mouseY + index * 200;
 			nextImages[index] = { src: image, x, y };
 		});
 	}
 
 	function updateLayoutForSection5(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 4
-		const frameWidth = 1000; // Width of the frame
+		const frameWidth = 1200; // Width of the frame
 		const frameHeight = 300; // Height of the frame
 		const x = mouseX - frameWidth / 2;
 		const y = mouseY - frameHeight / 2;
@@ -208,7 +208,7 @@
 <style>
 	.image {
 		position: absolute;
-		width: 400px;
+		width: 350px;
 		z-index: 2;
 	}
 	.container {
