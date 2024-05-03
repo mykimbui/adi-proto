@@ -181,6 +181,8 @@
 	{/each}
 
 	<h1>Originals</h1>
+
+	<img class="logo" src="logo.svg" alt="" />
 </div>
 
 <style>
@@ -194,6 +196,15 @@
 		position: relative;
 		width: 100vw;
 		background-color: #f7f7f7;
+	}
+
+	.logo {
+		position: fixed;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 24px;
+		width: 140px;
 	}
 
 	.explosion {
@@ -224,5 +235,6 @@
 		color: black;
 		left: 50%;
 		transform: translateX(-50%);
+		padding: 16px;
 	}
 </style>
