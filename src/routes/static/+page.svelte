@@ -180,6 +180,7 @@
 		}
 
 		function handleClick(event) {
+			console.log(event);
 			if (!transitionInProgress) {
 				updateImagesAndLayout(vh, vw, event.clientX, event.clientY);
 				createExplosion(event.clientX, event.clientY);
