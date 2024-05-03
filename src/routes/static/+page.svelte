@@ -1,5 +1,20 @@
 <script>
 	import { onMount } from 'svelte';
+	import image1 from '$lib/images/section1/img1.jpg';
+	import image2 from '$lib/images/section1/img2.jpg';
+	import image3 from '$lib/images/section1/img3.jpg';
+	import image4 from '$lib/images/section2/img1.jpg';
+	import image5 from '$lib/images/section2/img2.jpg';
+	import image6 from '$lib/images/section2/img3.jpg';
+	import image7 from '$lib/images/section3/img1.jpg';
+	import image8 from '$lib/images/section3/img2.jpg';
+	import image9 from '$lib/images/section3/img3.jpg';
+	import image13 from '$lib/images/section4/img1.jpg';
+	import image14 from '$lib/images/section4/img2.jpg';
+	import image15 from '$lib/images/section4/img3.jpg';
+	import image16 from '$lib/images/section5/img1.jpg';
+	import image17 from '$lib/images/section5/img2.jpg';
+	import image18 from '$lib/images/section5/img3.jpg';
 
 	let container;
 	let currentSection = 0;
@@ -16,23 +31,23 @@
 
 		if (nextSection === 0) {
 			// Next viewport: array of images for section 0
-			nextImages = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+			nextImages = [image1, image2, image3];
 			updateLayoutForSection1(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 1) {
 			// Next viewport: array of images for section 1
-			nextImages = ['image6.jpg', 'image7.jpg', 'image8.jpg'];
+			nextImages = [image4, image5, image6];
 			updateLayoutForSection2(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 2) {
 			// Next viewport: array of images for section 2
-			nextImages = ['image11.jpg', 'image12.jpg', 'image13.jpg'];
+			nextImages = [image7, image8, image9];
 			updateLayoutForSection3(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 3) {
 			// Next viewport: array of images for section 3
-			nextImages = ['image16.jpg', 'image17.jpg', 'image18.jpg'];
+			nextImages = [image13, image14, image15];
 			updateLayoutForSection4(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 4) {
 			// Next viewport: array of images for section 4
-			nextImages = ['image21.jpg', 'image22.jpg', 'image23.jpg'];
+			nextImages = [image16, image17, image18];
 			updateLayoutForSection5(vh, vw, mouseX, mouseY, nextImages);
 		}
 
