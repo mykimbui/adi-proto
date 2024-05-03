@@ -1,5 +1,5 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 
 	let container;
 	let currentSection = 0;
@@ -65,8 +65,8 @@
 	function updateLayoutForSection3(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 2
 		nextImages.forEach((image, index) => {
-			const x = mouseX + index * 80;
-			const y = mouseY + index * 80;
+			const x = mouseX + index * 160;
+			const y = mouseY + index * 160;
 			nextImages[index] = { src: image, x, y };
 		});
 	}
@@ -74,15 +74,15 @@
 	function updateLayoutForSection4(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 3
 		nextImages.forEach((image, index) => {
-			const x = mouseX - index * 80;
-			const y = mouseY + index * 80;
+			const x = mouseX - index * 160;
+			const y = mouseY + index * 160;
 			nextImages[index] = { src: image, x, y };
 		});
 	}
 
 	function updateLayoutForSection5(vh, vw, mouseX, mouseY, nextImages) {
 		// Calculate next layout for section 4
-		const frameWidth = 500; // Width of the frame
+		const frameWidth = 1000; // Width of the frame
 		const frameHeight = 300; // Height of the frame
 		const x = mouseX - frameWidth / 2;
 		const y = mouseY - frameHeight / 2;
@@ -135,10 +135,22 @@
 		requestAnimationFrame(updatePositions);
 	}
 
+	function createExplosion(x, y) {
+		const explosionElement = document.createElement('div');
+		explosionElement.className = 'explosion';
+		explosionElement.style.left = `${x}px`;
+		explosionElement.style.top = `${y}px`;
+		document.body.appendChild(explosionElement);
+
+		// After a short delay, remove the explosion element
+		setTimeout(() => {
+			explosionElement.remove();
+		}, 1000);
+	}
+
 	onMount(() => {
 		const vh = window.innerHeight;
 		const vw = window.innerWidth;
-		const body = document.querySelector('body');
 
 		function handleMouseMove(event) {
 			const mouseX = event.clientX;
@@ -149,15 +161,16 @@
 		function handleClick(event) {
 			if (!transitionInProgress) {
 				updateImagesAndLayout(vh, vw, event.clientX, event.clientY);
+				createExplosion(event.clientX, event.clientY);
 			}
 		}
 
-		body.addEventListener('mousemove', handleMouseMove);
-		body.addEventListener('click', handleClick);
+		document.body.addEventListener('mousemove', handleMouseMove);
+		document.body.addEventListener('click', handleClick);
 
 		return () => {
-			body.removeEventListener('mousemove', handleMouseMove);
-			body.removeEventListener('click', handleClick);
+			document.body.removeEventListener('mousemove', handleMouseMove);
+			document.body.removeEventListener('click', handleClick);
 		};
 	});
 </script>
@@ -166,25 +179,50 @@
 	{#each images as { src, x, y }, index}
 		<img {src} alt={`Image ${index}`} class="image" style="top: {y}px; left: {x}px;" />
 	{/each}
-	<!-- <div class="title">
-		<h1>Originals</h1>
-	</div> -->
+
+	<h1>Originals</h1>
 </div>
 
 <style>
 	.image {
 		position: absolute;
-		/* Additional styling for images */
-		width: 200px;
+		width: 150px;
+		z-index: 2;
 	}
 	.container {
 		height: 100vh;
 		position: relative;
 		width: 100vw;
-		background-color: black;
+		background-color: #f7f7f7;
 	}
+
+	.explosion {
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background-image: url('🌼');
+		background-size: cover;
+		animation: explode 1s ease-out;
+	}
+	@keyframes explode {
+		0% {
+			transform: scale(0);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(2);
+			opacity: 0;
+		}
+	}
+
 	h1 {
+		position: fixed;
+		top: 0;
+		z-index: 1;
+		font-size: 380px;
 		text-transform: uppercase;
-		color: white;
+		color: black;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 </style>

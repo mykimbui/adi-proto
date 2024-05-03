@@ -5,23 +5,26 @@
 @import './viewport.pcss';
 @import './utils.pcss';
 @import '../fonts/Inter/inter.css';
+@import '../fonts/ITC/itc.css';
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 :root {
-  --font-headings: 'Inter', sans-serif;
-	--font-body: 'Inter', sans-serif;
+	--font-headings: 'ITC', sans-serif;
+	--font-body: 'ITC', sans-serif;
 	--color-primary: lch(20% 108 300);
 	--color-accent: lch(88% 104 86);
 	--color-neutral: lch(25% 5 300);
-  font-family: var(--font-body);
+	font-family: var(--font-body);
 }
 
 @supports (font-variation-settings: normal) {
-  :root { 
-    --font-headings: 'InterVariable', sans-serif; font-optical-sizing: auto; 
-    --font-body: 'InterVariable', sans-serif; font-optical-sizing: auto; 
-  }
+	:root {
+		--font-headings: 'ITC', sans-serif;
+		font-optical-sizing: auto;
+		--font-body: 'ITC', sans-serif;
+		font-optical-sizing: auto;
+	}
 }
 
 html {
@@ -41,14 +44,14 @@ body {
 	color: var(--color-neutral);
 }
 
-:is(input[type="search"], input[type="text"]) {
-  outline: 1px solid transparent;
-  outline-offset: -1px;
-  transition: outline-color 300ms ease-out;
+:is(input[type='search'], input[type='text']) {
+	outline: 1px solid transparent;
+	outline-offset: -1px;
+	transition: outline-color 300ms ease-out;
 
-  &:focus-visible {
-	  outline-color: var(--outline);
-  }
+	&:focus-visible {
+		outline-color: var(--outline);
+	}
 }
 
 :--heading {

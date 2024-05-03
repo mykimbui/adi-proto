@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'ITC';
+	src:
+		url('ITCFranklinGothicStd-DmCp.woff2') format('woff2'),
+		url('ITCFranklinGothicStd-DmCp.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
