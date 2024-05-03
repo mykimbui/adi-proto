@@ -16,23 +16,23 @@
 
 		if (nextSection === 0) {
 			// Next viewport: array of images for section 0
-			nextImages = ['image1.jpg', 'image2.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg'];
+			nextImages = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
 			updateLayoutForSection1(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 1) {
 			// Next viewport: array of images for section 1
-			nextImages = ['image6.jpg', 'image7.jpg', 'image8.jpg', 'image9.jpg', 'image10.jpg'];
+			nextImages = ['image6.jpg', 'image7.jpg', 'image8.jpg'];
 			updateLayoutForSection2(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 2) {
 			// Next viewport: array of images for section 2
-			nextImages = ['image11.jpg', 'image12.jpg', 'image13.jpg', 'image14.jpg', 'image15.jpg'];
+			nextImages = ['image11.jpg', 'image12.jpg', 'image13.jpg'];
 			updateLayoutForSection3(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 3) {
 			// Next viewport: array of images for section 3
-			nextImages = ['image16.jpg', 'image17.jpg', 'image18.jpg', 'image19.jpg', 'image20.jpg'];
+			nextImages = ['image16.jpg', 'image17.jpg', 'image18.jpg'];
 			updateLayoutForSection4(vh, vw, mouseX, mouseY, nextImages);
 		} else if (nextSection === 4) {
 			// Next viewport: array of images for section 4
-			nextImages = ['image21.jpg', 'image22.jpg', 'image23.jpg', 'image24.jpg', 'image25.jpg'];
+			nextImages = ['image21.jpg', 'image22.jpg', 'image23.jpg'];
 			updateLayoutForSection5(vh, vw, mouseX, mouseY, nextImages);
 		}
 
@@ -86,21 +86,26 @@
 		const frameHeight = 300; // Height of the frame
 		const x = mouseX - frameWidth / 2;
 		const y = mouseY - frameHeight / 2;
+
 		nextImages.forEach((image, index) => {
 			let imgX, imgY;
-			if (index < 5) {
+
+			if (index < 3) {
 				// Top row
-				imgX = x + index * (frameWidth / 5);
+				imgX = x + index * (frameWidth / 3);
 				imgY = y;
-			} else if (index < 10) {
-				// Bottom row
-				imgX = x + (index - 5) * (frameWidth / 5);
-				imgY = y + frameHeight;
 			} else {
-				// Place any additional images appropriately
-				imgX = x + frameWidth / 2;
-				imgY = y + frameHeight / 2;
+				// Bottom row
+				imgX = x + (index - 3) * (frameWidth / 3);
+				imgY = y + frameHeight;
 			}
+
+			if (index >= nextImages.length) {
+				// Handle cases where there are fewer images
+				imgX = x + (index % 3) * (frameWidth / 3);
+				imgY = y + Math.floor(index / 3) * (frameHeight / 2);
+			}
+
 			nextImages[index] = { src: image, x: imgX, y: imgY };
 		});
 	}
@@ -188,7 +193,7 @@
 <style>
 	.image {
 		position: absolute;
-		width: 150px;
+		width: 300px;
 		z-index: 2;
 	}
 	.container {
