@@ -176,6 +176,7 @@
 			const mouseX = event.clientX;
 			const mouseY = event.clientY;
 			updateImagesAndLayout(vh, vw, mouseX, mouseY);
+			console.log(event);
 		}
 
 		function handleClick(event) {
