@@ -176,11 +176,9 @@
 			const mouseX = event.clientX;
 			const mouseY = event.clientY;
 			updateImagesAndLayout(vh, vw, mouseX, mouseY);
-			console.log(event);
 		}
 
 		function handleClick(event) {
-			console.log(event);
 			if (!transitionInProgress) {
 				updateImagesAndLayout(vh, vw, event.clientX, event.clientY);
 				createExplosion(event.clientX, event.clientY);
@@ -210,7 +208,7 @@
 <style>
 	.image {
 		position: absolute;
-		width: 300px;
+		width: 400px;
 		z-index: 2;
 	}
 	.container {
@@ -252,7 +250,7 @@
 		position: fixed;
 		top: 0;
 		z-index: 1;
-		font-size: 380px;
+		font-size: 460px;
 		text-transform: uppercase;
 		color: black;
 		left: 50%;
